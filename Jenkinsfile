@@ -3,11 +3,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Fetch the code from the master branch of GitHub
-                git branch: 'main', url: 'https://github.com/Slimdrissi123/devops-alinfo.git'
+                // Fetch the code from the main branch of GitHub
+                git branch: 'main', url: 'https://github.com/Slimdrissi123/timesheet-devops.git'
             }
         }
-        
         
         stage('Compile') {
             steps {
@@ -18,12 +17,14 @@ pipeline {
         
         stage('SonarQube analysis') {
             steps {
-               
-               
-                    sh 'mvn clean sonar:sonar '
+                // Define Maven tool
+                def mvn = tool 'Default Maven'
                 
+                // Execute SonarQube analysis
+                withSonarQubeEnv() {
+                    sh "${mvn}/bin/mvn sonar:sonar"
+                }
             }
         }
-        
     }
 }
