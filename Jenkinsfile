@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Fetch the code from the master branch of GitHub
-                git branch: 'main', url: 'https://github.com/bedirlouka/test-jenkins.git'
+                git branch: 'main', url: 'https://github.com/Slimdrissi123/devops-alinfo.git'
             }
         }
         
