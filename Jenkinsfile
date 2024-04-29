@@ -20,7 +20,7 @@ pipeline {
             steps {
                
                
-                    sh 'mvn sonar:sonar '
+                    sh 'mvn clean sonar:sonar '
                 
             }
         }
